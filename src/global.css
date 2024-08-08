@@ -1,0 +1,6 @@
+/* Add this to your global CSS file */
+input:focus {
+    border-color: black !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
