@@ -4,6 +4,8 @@ import quoteIcon from '../../assets/Billeder/quote.png'; // Add a quote icon
 import useRequestData from '../../hooks/useRequestData';
 import client1 from '../../assets/Billeder/customers/client-1.png';
 import client3 from '../../assets/Billeder/customers/client-3.png';
+import client4 from '../../assets/Billeder/customers/client-4.png';
+import client5 from '../../assets/Billeder/customers/client-5.png';
 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -11,6 +13,8 @@ import "slick-carousel/slick/slick-theme.css";
 const images = {
   'client-1.png': client1,
   'client-3.png': client3,
+  'client-4.png': client4,
+  'client-5.png': client5,
   
   // Add all other image mappings here
 };
@@ -61,7 +65,7 @@ const RecommendationSlider = () => {
     appendDots: dots => (
       <div className="flex justify-center space-x-2 mt-6 gap-2">
          {/* {dots.slice(0, 4)} Show only the first four dots */}
-         {dots.slice(0, 2)} 
+         {dots.slice(0, 4)} 
       </div>
     ),
     // beforeChange: (current, next) => setPageIndex(next % 2) // Reset page index to loop through only two dots
