@@ -3,14 +3,14 @@ import Slider from 'react-slick';
 import quoteIcon from '../../assets/Billeder/quote.png'; // Add a quote icon
 import useRequestData from '../../hooks/useRequestData';
 import client1 from '../../assets/Billeder/customers/client-1.png';
-import client2 from '../../assets/Billeder/customers/client-2.png';
+import client3 from '../../assets/Billeder/customers/client-3.png';
 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 const images = {
   'client-1.png': client1,
-  'client-2.png': client2,
+  'client-3.png': client3,
   
   // Add all other image mappings here
 };
