@@ -21,7 +21,8 @@ const Navbar = () => {
             <FaBars size={24} />
           </button>
         </div>
-        <div className="hidden md:flex space-x-8 ml-80 pt-10 ">
+    
+        <div className=" md:flex space-x-8 items-center ml-80 pt-10 hidden">
           <NavLink to="/" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Home</NavLink>
           <NavLink to="/about" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">About</NavLink>
           <NavLink to="/procedures" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Feature</NavLink>
