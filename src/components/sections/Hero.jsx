@@ -27,13 +27,13 @@ const Hero = () => {
 
   return (
     <section className="relative flex items-center p-10" style={{ height: '100vh' }}>
-      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15" />
+      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15 w-24 h-auto md:w-48 md:h-auto" />
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex-1 ml-20">
-          <h2 className="text-xl font-medium text-red-400 mb-10 uppercase">{data.title1}</h2>
-          <h1 className="text-6xl mb-4">{data.title2}</h1>
+          <h2 className="text-lg md:text-xl font-medium text-red-400 mb-4 uppercase">{data.title1}</h2>
+          <h1 className="text-3xl md:text-6xl mb-4">{data.title2}</h1>
           <p
-            className="text-lg mb-6 text-gray-500 font-thin"
+            className="text-sm md:text-lg mb-6 text-gray-500 font-thin"
             dangerouslySetInnerHTML={{
               __html: `
                Together creeping heaven upon third dominion be upon won't darkness rule behold<br />
@@ -41,7 +41,7 @@ const Hero = () => {
               `,
             }}
           ></p>
-          <div className="flex space-x-4">
+          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <button className="px-6 py-3 bg-[#F26A6C] text-white text-lg hover:text-black">
               RESERVE NOW
             </button>
@@ -63,6 +63,7 @@ const Hero = () => {
               >
                 X
               </button>
+              <div className="relative w-full h-0 pb-9/16 md:pb-9/16"> {/* Aspect ratio box */}
               <iframe
                 width="960"
                 height="540"
@@ -71,7 +72,9 @@ const Hero = () => {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+              >
+              </iframe>
+                   </div>
             </div>
           )}
         </div>

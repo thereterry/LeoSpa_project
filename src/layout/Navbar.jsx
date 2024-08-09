@@ -14,11 +14,14 @@ const Navbar = () => {
     <nav className="flex justify-between max-w-2xl">
       <div className="container mx-auto flex">
         <div className="flex justify-between ">
-          <img src={logo} alt="Leospa Logo" className="h-20 w-15 ml-40" />
+          <img src={logo} 
+          alt="Leospa Logo" 
+           className="h-12 w-15 logomd:h-20 ml-10 md:ml-40 transition-all duration-300"/>
+     
         </div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-red-500 focus:outline-none">
-            <FaBars size={24} />
+          <button onClick={toggleMenu} className="text-red-500 focus:outline-none ml-20 py-6">
+            <FaBars size={26} />
           </button>
         </div>
     
@@ -30,6 +33,19 @@ const Navbar = () => {
           <NavLink to="/contact" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Contact</NavLink>
         </div>
       </div>
+
+      {/* Mobile Menu: Appears when the burger menu is clicked */}
+      {isOpen && (
+        <div className="md:hidden bg-white w-full mt-40">
+          <nav className="flex flex-col space-y-2 items-center">
+            <NavLink to="/" className="text-lg text-gray-700 hover:text-red-500 uppercase" onClick={toggleMenu}>Home</NavLink>
+            <NavLink to="/about" className="text-lg text-gray-700 hover:text-red-500 uppercase" onClick={toggleMenu}>About</NavLink>
+            <NavLink to="/procedures" className="text-lg text-gray-700 hover:text-red-500 uppercase" onClick={toggleMenu}>Feature</NavLink>
+            <NavLink to="/service" className="text-lg text-gray-700 hover:text-red-500 uppercase" onClick={toggleMenu}>Service</NavLink>
+            <NavLink to="/contact" className="text-lg text-gray-700 hover:text-red-500 uppercase" onClick={toggleMenu}>Contact</NavLink>
+          </nav>
+        </div>
+      )}
     </nav>
   );
 };
