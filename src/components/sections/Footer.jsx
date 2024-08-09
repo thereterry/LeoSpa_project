@@ -41,7 +41,7 @@ const Footer = () => {
           </ul>
         </nav>
         
-          {/* <div className="mb-6">
+          <div className="mb-6">
             <p className="text-base text-gray-700">{footerData.name}</p>
             <p className="text-base text-gray-700">CVR: {footerData.cvr}</p>
             <p className="text-base text-gray-700">{footerData.address}</p>
@@ -49,7 +49,7 @@ const Footer = () => {
             <p className="text-base text-gray-700">Phone: {footerData.phone}</p>
             <p className="text-base text-gray-700">Email: {footerData.email}</p>
             <p className="text-base text-gray-700">{footerData.openinghours}</p>
-          </div> */}
+          </div>  
 
         <div className="flex justify-center space-x-4 mb-6 social-icons">
           <div className="relative flex items-center">
