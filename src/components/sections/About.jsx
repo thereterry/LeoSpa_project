@@ -79,11 +79,11 @@ const About = () => {
           className="px-10 py-3 bg-[#F26A6C] text-white text-lg uppercase rounded-full hover:text-black">
           {isExpanded ? 'Show Less' : 'Read More'}
         </button>
-        <div className="mt-6">
+        {/* <div className="mt-6">
             <NavLink to="/feature" className="text-lg text-blue-500 hover:text-blue-700">
                 Learn more about our Features
           </NavLink>
-        </div>
+        </div> */}
       </div>
       <img src={flowerRight} alt="Flower" className="absolute right-10 top-40 w-24 h-24" />
       <div className="container mx-auto px-4 mt-10">

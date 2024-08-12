@@ -6,7 +6,9 @@ import useRequestData from '../../hooks/useRequestData';
 
 const Hero = () => {
   const { makeRequest, data, error, isLoading } = useRequestData();
+
   const [heroData, setHeroData] = useState(null);
+
   const [isVideoVisible, setIsVideoVisible] = useState(false); 
 
   useEffect(() => {
@@ -31,7 +33,9 @@ const Hero = () => {
 
   // Show loading or error state if needed
   if (isLoading) return <p>Loading...</p>;
+
   if (error) return <p>Error loading data</p>;
+
   if (!heroData) return <p>No data available</p>;
 
   return (
@@ -39,11 +43,15 @@ const Hero = () => {
       <img src={leafImage} alt="Leaf" className="absolute left-0 top-15" />
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex-1 ml-20">
-          <h2 className="text-xl font-medium text-red-400 mb-10 uppercase">{heroData.title1}</h2>
+        <h2 className="text-xl font-medium text-red-400 mb-10 uppercase">
+          {heroData.title1.replace("Beuty", "Beauty")}
+        </h2>
+          {/* <h2 className="text-xl font-medium text-red-400 mb-10 uppercase">{heroData.title1}</h2> */}
           <h1 className="text-6xl mb-4">
-            {heroData.title2.split(' ')[0]} <br />
-            {heroData.title2.split(' ').slice(1).join(' ')}
+            {heroData.title2.split(' ').slice(0, 3).join(' ')} <br />
+            {heroData.title2.split(' ').slice(3).join(' ')}.
           </h1>
+          
           <p
             className="text-lg mb-6 text-gray-500 font-thin"
             dangerouslySetInnerHTML={{ __html: heroData.content }}
@@ -73,7 +81,7 @@ const Hero = () => {
               <iframe
                 width="960"
                 height="540"
-                src={`${heroData.link}?autoplay=1`}
+                src={`https://www.youtube.com/embed/QWUPm0ND7HY?autoplay=1`} // Use the embed URL format
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

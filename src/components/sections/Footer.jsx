@@ -41,15 +41,17 @@ const Footer = () => {
           </ul>
         </nav>
         
-          {/* <div className="mb-6">
-            <p className="text-base text-gray-700">{footerData.name}</p>
-            <p className="text-base text-gray-700">CVR: {footerData.cvr}</p>
-            <p className="text-base text-gray-700">{footerData.address}</p>
-            <p className="text-base text-gray-700">{footerData.zipncity}</p>
-            <p className="text-base text-gray-700">Phone: {footerData.phone}</p>
-            <p className="text-base text-gray-700">Email: {footerData.email}</p>
-            <p className="text-base text-gray-700">{footerData.openinghours}</p>
-          </div>   */}
+    
+          <div className="mb-6">
+            <p className="text-base text-gray-700">{footerData?.name || 'Default Name'}</p>
+            <p className="text-base text-gray-700">CVR: {footerData?.cvr || 'Default CVR'}</p>
+            <p className="text-base text-gray-700">{footerData?.address || 'Default Address'}</p>
+            <p className="text-base text-gray-700">{footerData?.zipncity || 'Default City'}</p>
+            <p className="text-base text-gray-700">Phone: {footerData?.phone || 'Default Phone'}</p>
+            <p className="text-base text-gray-700">Email: {footerData?.email || 'default@example.com'}</p>
+            <p className="text-base text-gray-700">{footerData?.openinghours || 'Default Opening Hours'}</p>
+          </div>
+          
 
         <div className="flex justify-center space-x-4 mb-6 social-icons">
           <div className="relative flex items-center">
