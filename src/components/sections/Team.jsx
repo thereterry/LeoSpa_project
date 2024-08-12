@@ -65,26 +65,26 @@ const Team = () => {
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                       {/* Social media with circle around and hover effect */}
                     <div className="w-10 h-10 flex items-center justify-center bg-white border border-black rounded-full hover:bg-white transition-colors">
-                      <TiSocialFacebook className="text-gray-700 hover:text-red-700 text-2xl font-bold" />
+                      <TiSocialFacebook className="text-gray-700 hover:text-red-500 text-2xl font-bold" />
                     </div>
                   </a>
                   <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
                         {/* Social media with circle around and hover */}
                     <div className="w-10 h-10 flex items-center justify-center bg-white border border-black rounded-full hover:bg-white transition-colors">
-                      <TiSocialTwitter className="text-gray-700 hover:text-red-700 text-2xl font-bold" />
+                      <TiSocialTwitter className="text-gray-700 hover:text-red-500 text-2xl font-bold" />
                     </div>
                   </a>
                   <a href="https://plus.google.com" target="_blank" rel="noopener noreferrer">
                       {/* Social media with circle around and hover */}
                     <div className="w-10 h-10 flex items-center justify-center bg-white border border-black rounded-full hover:bg-white transition-colors">
-                        <TiSocialGooglePlus className="text-gray-700 hover:text-red-700 text-2xl font-bold" />
+                        <TiSocialGooglePlus className="text-gray-700 hover:text-red-500 text-2xl font-bold" />
                     </div>
                
                   </a>
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                     {/* Social media with circle around and hover */}
                     <div className="w-10 h-10 flex items-center justify-center bg-white border border-black rounded-full hover:bg-white transition-colors">
-                        <SlSocialInstagram className="text-gray-700 hover:text-red-700 text-2xl font-bold" />
+                        <SlSocialInstagram className="text-gray-700 hover:text-red-500 text-2xl font-bold" />
                     </div>
                     
                   </a>
