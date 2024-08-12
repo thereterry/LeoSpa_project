@@ -29,6 +29,7 @@ const Team = () => {
   }, [data]);
 
   if (isLoading) return <p>Loading...</p>;
+  
   if (error) return <p>Error loading data</p>;
 
   return (
