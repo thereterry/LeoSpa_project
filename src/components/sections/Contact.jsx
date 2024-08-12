@@ -6,7 +6,7 @@ import contactImage from '../../assets/Billeder/appointment-img.jpg';
 const Contact = () => {
   
   return (
-    <section className="flex flex-wrap bg-[#FEF7F6] py-20">
+    <section className="flex flex-wrap bg-[#FEF7F6] py-20" id='contact'>
       <div className="w-full lg:w-1/2">
         <img src={contactImage} alt="Contact" className="w-full h-auto object-cover" />
       </div>

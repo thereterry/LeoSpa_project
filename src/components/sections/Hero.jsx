@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import heroImage from '../../assets/Billeder/spa.png';
 import leafImage from '../../assets/Billeder/leaf.png';
 import { CiPlay1 } from "react-icons/ci";
+import useRequestData from '../../hooks/useRequestData';
 
 const Hero = () => {
-  
-  // Mock data as a placeholder
-  const mockData = {
-    title1: "SPA & Beauty Center",
-    title2: "Beauty and success starts here",
-    content: "Choose the perfect spa treatment for you or that special someone today. Or book in for your regular beauty therapy needs.",
-    link: "https://www.youtube.com/watch?v=QWUPm0ND7HY"
-  };
+  const { makeRequest, data, error, isLoading } = useRequestData();
+  const [heroData, setHeroData] = useState(null);
+  const [isVideoVisible, setIsVideoVisible] = useState(false); 
 
-  const [data, setData] = useState(mockData);
-  
-  const [isVideoVisible, setIsVideoVisible] = useState(false); // State to manage video visibility
+  useEffect(() => {
+    makeRequest('http://localhost:5029/hero');
+  }, [makeRequest]);
+
+  useEffect(() => {
+    if (data) {
+      // Filter the data to find the one with "show": true
+      const filteredData = data.find(item => item.show === true);
+      setHeroData(filteredData);
+    }
+  }, [data]);
 
   const handlePlayClick = () => {
     setIsVideoVisible(true);
@@ -23,30 +27,33 @@ const Hero = () => {
 
   const handleCloseClick = () => {
     setIsVideoVisible(false);
-  }
+  };
+
+  // Show loading or error state if needed
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading data</p>;
+  if (!heroData) return <p>No data available</p>;
 
   return (
     <section className="relative flex items-center p-10" style={{ height: '100vh' }}>
-      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15 w-24 h-auto md:w-48 md:h-auto" />
+      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15" />
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex-1 ml-20">
-          <h2 className="text-lg md:text-xl font-medium text-red-400 mb-4 uppercase">{data.title1}</h2>
-          <h1 className="text-3xl md:text-6xl mb-4">{data.title2}</h1>
+          <h2 className="text-xl font-medium text-red-400 mb-10 uppercase">{heroData.title1}</h2>
+          <h1 className="text-6xl mb-4">
+            {heroData.title2.split(' ')[0]} <br />
+            {heroData.title2.split(' ').slice(1).join(' ')}
+          </h1>
           <p
-            className="text-sm md:text-lg mb-6 text-gray-500 font-thin"
-            dangerouslySetInnerHTML={{
-              __html: `
-               Together creeping heaven upon third dominion be upon won't darkness rule behold<br />
-              it created good saw after she'd Our set living.
-              `,
-            }}
+            className="text-lg mb-6 text-gray-500 font-thin"
+            dangerouslySetInnerHTML={{ __html: heroData.content }}
           ></p>
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+          <div className="flex space-x-4">
             <button className="px-6 py-3 bg-[#F26A6C] text-white text-lg hover:text-black">
               RESERVE NOW
             </button>
-            <div 
-              onClick={handlePlayClick} 
+            <div
+              onClick={handlePlayClick}
               className="flex items-center space-x-2 text-lg text-gray-700 hover:text-gray-900 cursor-pointer"
             >
               <div className="flex items-center justify-center w-10 h-10 bg-red-50 rounded-full">
@@ -63,26 +70,23 @@ const Hero = () => {
               >
                 X
               </button>
-              <div className="relative w-full h-0 pb-9/16 md:pb-9/16"> {/* Aspect ratio box */}
               <iframe
                 width="960"
                 height="540"
-                src="https://www.youtube.com/embed/QWUPm0ND7HY?autoplay=1" // Replace with your video link
+                src={`${heroData.link}?autoplay=1`}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              >
-              </iframe>
-                   </div>
+              ></iframe>
             </div>
           )}
         </div>
         <div className="flex-1 text-right hidden md:block">
-          <img 
-            src={heroImage} 
-            alt="Beauty treatment" 
-            className="absolute top-[-80px] right-0 h-90 w-auto rounded-lg object-cover z-10 md:block hidden" 
+          <img
+            src={heroImage}
+            alt="Beauty treatment"
+            className="absolute top-[-80px] right-0 h-90 w-auto rounded-lg object-cover z-10 md:block hidden"
           />
         </div>
       </div>

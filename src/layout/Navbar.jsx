@@ -26,11 +26,11 @@ const Navbar = () => {
         </div>
     
         <div className=" md:flex space-x-8 items-center ml-80 pt-10 hidden">
-          <NavLink to="/" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Home</NavLink>
-          <NavLink to="/about" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">About</NavLink>
-          <NavLink to="/procedures" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Feature</NavLink>
-          <NavLink to="/service" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Service</NavLink>
-          <NavLink to="/contact" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Contact</NavLink>
+          <a href="/" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Home</a>
+          <a href='#about' className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">About</a>
+          <a href='#procedures' className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Feature</a>
+          <a href="#service" className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Service</a>
+          <a href='#contact' className="text-lg text-gray-700 hover:text-red-500 uppercase block md:inline-block">Contact</a>
         </div>
       </div>
 

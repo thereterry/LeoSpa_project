@@ -25,7 +25,7 @@ const Procedures = () => {
   ];
 
   return (
-    <div>
+    <div id='procedures'>
       <h1 className='text-4xl  text-center font-medium mb-4 font-display'>Popular Procedures</h1>
       <p
   className="text-sm  text-center mb-6 text-custom-gray font-thin leading-8"
