@@ -33,9 +33,9 @@ const About = () => {
 
   return (
     <section className="relative py-20 bg-white text-center" id='about'>
-      <img src={flowerLeft} alt="Flower" className="absolute left-60 top-20 w-24 h-24 hidden md:block" />
+      <img src={flowerLeft} alt="Flower" className="absolute left-1/2 transform -translate-x-1/2 top-4 md:top-20 w-16 h-16 md:left-60 md:w-24 md:h-24 " />
       <div className="container mx-auto px-4">
-        <img src={butterflyImage} alt="Butterfly" className='mx-auto mb-6' />
+        <img src={butterflyImage} alt="Butterfly" className='mx-auto mb-6 hidden md:block' />
         <h2 className="text-custom-gray font-medium text-lg uppercase mb-4 ">About Our Spa Center</h2>
         <h3 className="text-4xl font-medium mb-4 font-display">{aboutData.title}</h3>
         <p

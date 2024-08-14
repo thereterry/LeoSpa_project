@@ -26,13 +26,13 @@ const Hero = () => {
 
   return (
     <section className="relative flex items-center p-10" style={{ height: '100vh' }}>
-      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15" />
+      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15 w-24 md:w-48" /> 
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex-1 ml-20">
           <h2 className="text-xl font-medium text-red-400 mb-10 uppercase">
             {heroData.title1.replace("Beuty", "Beauty")}
           </h2>
-          <h1 className="text-6xl mb-4">
+          <h1 className="text-2xl md:text-6xl mb-4">
             {heroData.title2.split(' ').slice(0, 3).join(' ')} <br />
             {heroData.title2.split(' ').slice(3).join(' ')}.
           </h1>
@@ -40,8 +40,8 @@ const Hero = () => {
             className="text-lg mb-6 text-gray-500 font-thin"
             dangerouslySetInnerHTML={{ __html: heroData.content }}
           ></p>
-          <div className="flex space-x-4">
-            <button className="px-6 py-3 bg-[#F26A6C] text-white text-lg hover:text-black">
+          <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+            <button className="px-6 py-2 bg-[#F26A6C] text-white text-lg hover:text-black">
               RESERVE NOW
             </button>
             <a
