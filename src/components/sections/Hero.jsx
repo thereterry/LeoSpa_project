@@ -3,11 +3,20 @@ import heroImage from '../../assets/Billeder/spa.png';
 import leafImage from '../../assets/Billeder/leaf.png';
 import { CiPlay1 } from "react-icons/ci";
 import useRequestData from '../../hooks/useRequestData';
+import { useNavigate } from 'react-router-dom';
+
 
 const Hero = () => {
   const { makeRequest, data, error, isLoading } = useRequestData();
 
   const [heroData, setHeroData] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleReserveNow = () => {
+    navigate('/reserve'); // Navigate to the reserve page
+  };
+
 
   useEffect(() => {
     makeRequest('http://localhost:5029/hero');
@@ -40,10 +49,13 @@ const Hero = () => {
             className="text-lg mb-6 text-gray-500 font-thin"
             dangerouslySetInnerHTML={{ __html: heroData.content }}
           ></p>
+
           <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-            <button className="px-6 py-2 bg-[#F26A6C] text-white text-lg hover:text-black">
+              {/*Hero component code */}
+              <button onClick={handleReserveNow} className="px-6 py-2 bg-[#F26A6C] text-white text-lg hover:text-black">
               RESERVE NOW
-            </button>
+              </button>
+  
             <a
               href={`https://www.youtube.com/watch?v=${heroData.link.split('?v=')[1]}`}
               target="_blank"

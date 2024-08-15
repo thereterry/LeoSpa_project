@@ -10,27 +10,45 @@ import facialImg from '../../assets/Billeder/extra_procedures_etc/7.jpg';
 import Icon from '../../assets/Billeder/icons/1.png';
 
 const About = () => {
-  const { makeRequest, data, error, isLoading } = useRequestData();
-  const [aboutData, setAboutData] = useState({ title: '', content: '' });
-  const [isExpanded, setIsExpanded] = useState(false);
 
+  //Component Definition and State
+
+  const { makeRequest, data, error, isLoading } = useRequestData();  //makerequest extracted from userequestData Hook for handling API request and responses
+
+  const [aboutData, setAboutData] = useState({ title: '', content: '' });  //State variable for storing the fetched "About" section data.
+
+  const [isExpanded, setIsExpanded] = useState(false);   //isExapnded:State variable to toggle the Read More/Show Less functionality
+
+
+    //Fetching Data 
+
+    //First useEffect:Triggers the API request when the component mounts
   useEffect(() => {
-    makeRequest('http://localhost:5029/about');
+    makeRequest('http://localhost:5029/about');  
   }, [makeRequest]);
 
-  useEffect(() => {
+
+  //Second useEffect: Updates aboutData state when data is successfully fetched from the API.
+
+  useEffect(() => {   
     if (data) {
       setAboutData(data);
     }
   }, [data]);
 
+
+  //Toggle Read More/Show Less:	•	Function to toggle between showing the full content or just a preview in the About section.
   const toggleReadMore = () => {
     setIsExpanded(!isExpanded);
   };
 
+
+  // Loading and Error Handling:
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading data</p>;
 
+
+  //Rendering the Component:
   return (
     <section className="relative py-20 bg-white text-center" id='about'>
       <img src={flowerLeft} alt="Flower" className="absolute left-1/2 transform -translate-x-1/2 top-4 md:top-20 w-16 h-16 md:left-60 md:w-24 md:h-24 " />
