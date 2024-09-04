@@ -13,22 +13,20 @@ const About = () => {
 
   //Component Definition and State
 
-  const { makeRequest, data, error, isLoading } = useRequestData();  //makerequest extracted from userequestData Hook for handling API request and responses
+  const { makeRequest, data, error, isLoading } = useRequestData();  
 
-  const [aboutData, setAboutData] = useState({ title: '', content: '' });  //State variable for storing the fetched "About" section data.
+  const [aboutData, setAboutData] = useState({ title: '', content: '' });  
 
-  const [isExpanded, setIsExpanded] = useState(false);   //isExapnded:State variable to toggle the Read More/Show Less functionality
+  const [isExpanded, setIsExpanded] = useState(false);  
 
 
-    //Fetching Data 
-
-    //First useEffect:Triggers the API request when the component mounts
+   
   useEffect(() => {
     makeRequest('http://localhost:5029/about');  
   }, [makeRequest]);
 
 
-  //Second useEffect: Updates aboutData state when data is successfully fetched from the API.
+
 
   useEffect(() => {   
     if (data) {
@@ -37,18 +35,17 @@ const About = () => {
   }, [data]);
 
 
-  //Toggle Read More/Show Less:	•	Function to toggle between showing the full content or just a preview in the About section.
   const toggleReadMore = () => {
     setIsExpanded(!isExpanded);
   };
 
 
-  // Loading and Error Handling:
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading data</p>;
 
 
-  //Rendering the Component:
+
   return (
     <section className="relative py-20 bg-white text-center" id='about'>
       <img src={flowerLeft} alt="Flower" className="absolute left-1/2 transform -translate-x-1/2 top-4 md:top-20 w-16 h-16 md:left-60 md:w-24 md:h-24 " />
@@ -71,30 +68,30 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="relative group">
             <img src={massageImg} alt="Massage" className="w-full h-auto" />
-            <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-playfair">
               <img src={Icon} alt="Icon" className="text-white text-4xl mb-2" />
-              <p className="text-white font-display">Massage Treatment</p>
+              <p className="text-white">Body Treatment</p>
             </div>
           </div>
           <div className="relative group">
             <img src={hotStoneImg} alt="Hot Stone" className="w-full h-auto" />
-            <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-playfair">
               <img src={Icon} alt="Icon" className="text-white text-4xl mb-2" />
-              <p className="text-white font-display">Hot Stone Treatment</p>
+              <p className="text-white">Body Treatment</p>
             </div>
           </div>
           <div className="relative group">
             <img src={waxingImg} alt="Waxing" className="w-full h-auto" />
-            <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-playfair">
               <img src={Icon} alt="Icon" className="text-white text-4xl mb-2" />
-              <p className="text-white font-display">Waxing Treatment</p>
+              <p className="text-white">Body Treatment</p>
             </div>
           </div>
           <div className="relative group">
             <img src={facialImg} alt="Facial" className="w-full h-auto" />
             <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <img src={Icon} alt="Icon" className="text-white text-4xl mb-2" />
-              <p className="text-white font-display">Facial Treatment</p>
+              <p className="text-white font-playfair">Body Treatment</p>
             </div>
           </div>
         </div>

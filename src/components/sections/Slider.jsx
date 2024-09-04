@@ -24,7 +24,6 @@ const RecommendationSlider = () => {
 
   const [recommendations, setRecommendations] = useState([]);
 
-  // const [pageIndex, setPageIndex] = useState(0); // For tracking which recommendation to display
 
 
   useEffect(() => {
@@ -33,7 +32,7 @@ const RecommendationSlider = () => {
 
   useEffect(() => {
     if (data) {
-      console.log('Fetched data:', data); // Log fetched data
+   
       setRecommendations(data);
     }
   }, [data]);

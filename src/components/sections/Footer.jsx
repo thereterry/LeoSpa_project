@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/Billeder/logo.png'; // Import your logo image
+import logo from '../../assets/Billeder/logo.png'; 
 import useRequestData from '../../hooks/useRequestData';
 import { TiSocialFacebook } from "react-icons/ti";
 import { TiSocialTwitter } from "react-icons/ti";
@@ -22,7 +22,7 @@ const Footer = () => {
     }
   }, [data]);
 
-  console.log(isLoading);
+  // console.log(isLoading);
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading data</p>;
 

@@ -26,7 +26,7 @@ const Procedures = () => {
 
   return (
     <div id='procedures'>
-      <h1 className='text-4xl  text-center font-medium mb-4 font-display'>Popular Procedures</h1>
+      <h1 className='text-4xl  text-center font-medium mb-4 font-playfair'>Popular Procedures</h1>
       <p
   className="text-sm  text-center mb-6 text-custom-gray font-thin leading-8"
   dangerouslySetInnerHTML={{
@@ -43,7 +43,7 @@ const Procedures = () => {
                <div className="bg-white shadow-md border overflow-hidden h-full flex flex-col w-full">
                   <img src={procedure.img} alt={procedure.title} className="h-full p-4" />
                   <div className="p-2 flex flex-col flex-grow justify-between">
-                    <h3 className="text-2xl font-display mt-4">{procedure.title}</h3>
+                    <h3 className="text-2xl font-playfair mt-4">{procedure.title}</h3>
                     <p className="text-sm font-thin text-gray-700 mb-6 flex-grow mt-4 leading-6" dangerouslySetInnerHTML={{ __html: procedure.description }}></p>
                     <button className="px-4 py-2 bg-[#242A2C] text-white text-base rounded-full hover:bg-[#F26A6C] uppercase mt-2 m-20 ">Read More</button>
                   </div>

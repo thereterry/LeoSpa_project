@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react'; 
 import axios from 'axios';
 
 const useRequestData = () => {
@@ -28,18 +28,16 @@ const useRequestData = () => {
           response = await axios.delete(apiurl, { headers, params });
           break;
         default:
-          throw new Error('Invalid method - GET, POST, PUT, PATCH, DELETE were expected');
+          throw new Error('Invalid method - expected GET, POST, PUT, PATCH, DELETE');
       }
 
       if (response.data) {
-        console.log('Response data:', response.data);
         setData(response.data);
         setError(null);
       } else {
         throw new Error('Empty response / no data');
       }
     } catch (error) {
-      console.error('Axios error:', error);
       setError(error.message);
       setData(null);
     } finally {

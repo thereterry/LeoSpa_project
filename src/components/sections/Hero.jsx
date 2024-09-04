@@ -38,10 +38,10 @@ const Hero = () => {
       <img src={leafImage} alt="Leaf" className="absolute left-0 top-15 w-24 md:w-48" /> 
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex-1 ml-20">
-          <h2 className="text-xl font-medium text-red-400 mb-10 uppercase">
-            {heroData.title1.replace("Beuty", "Beauty")}
+          <h2 className="text-xl font-medium text-red-400 mb-10 uppercase font-themify">
+            {heroData.title1.replace("Beuty", "Beauty").replace(/and/g, "&")}
           </h2>
-          <h1 className="text-2xl md:text-6xl mb-4">
+          <h1 className="text-2xl md:text-6xl mb-4 font-playfair">
             {heroData.title2.split(' ').slice(0, 3).join(' ')} <br />
             {heroData.title2.split(' ').slice(3).join(' ')}.
           </h1>

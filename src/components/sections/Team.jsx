@@ -35,12 +35,12 @@ const Team = () => {
   return (
     <section className="py-20 bg-white text-center">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl text-center font-medium mb-4 font-display">Experienced Team</h1>
+        <h1 className="text-4xl text-center font-medium mb-4 font-playfair">Experienced Team</h1>
         <p
           className="text-sm text-center mb-6 text-custom-gray font-thin leading-8"
           dangerouslySetInnerHTML={{
             __html: `
-              To doesn't his appear replenish together called he of mad place won't wherein blessed second every wherein were meat kind wherein and martcin.
+              To doesn't his appear replenish together called he of mad place won't wherein blessed second every wherein <br> were meat kind wherein and martcin.
             `,
           }}
         ></p>

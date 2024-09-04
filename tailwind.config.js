@@ -16,8 +16,10 @@ export default {
         'custom-red': '#F26A6C',
       },
       fontFamily: {
-        'serif': ['Lora', 'serif'],
-        'display': ['Playfair Display', 'serif'],
+        'serif': ['Themify', 'sans-serif'],
+        'playfair': ['Playfair Display', 'serif'],
+
+
 
       },
 

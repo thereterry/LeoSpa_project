@@ -117,15 +117,15 @@ const Contact = () => {
           </button>
         </form>
         
-        {/* Show loading state */}
+  
         {isLoading && <p>Loading...</p>}
 
-        {/* Show success or error message */}
+
         {data && <p className="text-green-500">Appointment created successfully!</p>}
         {error && (
         <div>
           <p className="text-red-500">Failed to create appointment.</p>
-          <pre>{JSON.stringify(error, null, 2)}</pre> {/* This will display the error details */}
+          <pre>{JSON.stringify(error, null, 2)}</pre> 
         </div>
         )}
       </div>

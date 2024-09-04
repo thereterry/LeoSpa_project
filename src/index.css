@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*FONTS*/
 @font-face {
     font-family: 'Themify';
@@ -12,9 +16,7 @@
 
 /* TUTORIAL https://www.youtube.com/watch?v=Zt_BfwlDUIY */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 /* src/index.css */
 html {
@@ -22,8 +24,8 @@ html {
 }
 
 /* font settings */
-h1 {
-    font-family: 'Themify', serif;
+h2 {
+    font-family: 'Themify', sans-serif;
 }
 
 
