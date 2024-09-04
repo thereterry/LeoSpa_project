@@ -14,7 +14,7 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleReserveNow = () => {
-    navigate('/reserve'); // Navigate to the reserve page
+    navigate('/reserve'); 
   };
 
 
@@ -35,24 +35,24 @@ const Hero = () => {
 
   return (
     <section className="relative flex items-center p-10" style={{ height: '100vh' }}>
-      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15 w-24 md:w-48" /> 
+      <img src={leafImage} alt="Leaf" className="absolute left-0 top-15 w-12 md:w-48" /> 
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex-1 ml-20">
-          <h2 className="text-xl font-medium text-red-400 mb-10 uppercase font-themify">
+        <div className="flex-1 ml-5 md:ml-20 mt-[-20px] md:mt-[-40px]">
+          <h2 className="text-lg font-medium text-red-400 mb-10 uppercase font-themify">
             {heroData.title1.replace("Beuty", "Beauty").replace(/and/g, "&")}
           </h2>
-          <h1 className="text-2xl md:text-6xl mb-4 font-playfair">
+          <h1 className="text-6xl md:text-6xl mb-2 md:mb-4 font-playfair leading-tight">
             {heroData.title2.split(' ').slice(0, 3).join(' ')} <br />
             {heroData.title2.split(' ').slice(3).join(' ')}.
           </h1>
           <p
-            className="text-lg mb-6 text-gray-500 font-thin"
+            className="text-sm md:text-lg mb-4 md:mb-6 text-gray-500 font-thin leading-normal md:leading-relaxed"
             dangerouslySetInnerHTML={{ __html: heroData.content }}
           ></p>
 
           <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-              {/*Hero component code */}
-              <button onClick={handleReserveNow} className="px-6 py-2 bg-[#F26A6C] text-white text-lg hover:text-black">
+           
+              <button onClick={handleReserveNow} className="px-6 w-60 py-2 bg-[#F26A6C] text-white text-lg hover:text-black">
               RESERVE NOW
               </button>
   
