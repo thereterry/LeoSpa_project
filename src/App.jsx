@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomeLayout from './layout/HomeLayout';
+import MainLayout from './layout/MainLayout';
 import Home from './pages/Home'
 import Reserve from './pages/Reserve';
 import AdminPage from './layout/ADMIN/AdminPage';
