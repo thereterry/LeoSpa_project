@@ -11,7 +11,7 @@ import Icon from '../../assets/Billeder/icons/1.png';
 
 const About = () => {
 
-  //Component Definition and State
+
 
   const { makeRequest, data, error, isLoading } = useRequestData();  
 

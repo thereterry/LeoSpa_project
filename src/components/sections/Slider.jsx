@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
-import quoteIcon from '../../assets/Billeder/quote.png'; // Add a quote icon
+import quoteIcon from '../../assets/Billeder/quote.png'; 
 import useRequestData from '../../hooks/useRequestData';
 import client1 from '../../assets/Billeder/customers/client-1.png';
 import client3 from '../../assets/Billeder/customers/client-3.png';
@@ -16,7 +16,6 @@ const images = {
   'client-4.png': client4,
   'client-5.png': client5,
   
-  // Add all other image mappings here
 };
 
 const RecommendationSlider = () => {
@@ -42,7 +41,7 @@ const RecommendationSlider = () => {
   }
 
   if (error) {
-    console.error('Error fetching data:', error); // Log the error
+    console.error('Error fetching data:', error); 
     return <div>Error loading data</div>;
   }
 
@@ -67,7 +66,7 @@ const RecommendationSlider = () => {
          {dots.slice(0, 4)} 
       </div>
     ),
-    // beforeChange: (current, next) => setPageIndex(next % 2) // Reset page index to loop through only two dots
+   
   };
 
   return (

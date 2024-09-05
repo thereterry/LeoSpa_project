@@ -3,13 +3,16 @@ import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import Procedures from '../components/sections/Procedures';
 import Slider from '../components/sections/Slider';
+
 import Team from '../components/sections/Team';
 import Contact from '../components/sections/Contact';
 import Footer from '../components/sections/Footer';
 
-const Home = ({ children }) => {
+
+
+const HomeLayout = () => {
   return (
-    <main>
+    <main className=''>
     <Hero />
     <section id="about">
       <About />
@@ -28,17 +31,16 @@ const Home = ({ children }) => {
     </section>
     <Footer />
   </main>
-    // <>
+    // <main className=''>
     //   <Hero />
     //   <About />
     //   <Procedures />
     //   <Slider />
     //   <Team />
     //   <Contact />
-    //   {children}
     //   <Footer />
-    // </>
+    // </main>
   );
 };
 
-export default Home;
+export default HomeLayout;

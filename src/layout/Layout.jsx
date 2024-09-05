@@ -1,27 +1,3 @@
-// import React from 'react'
-// import { Outlet } from 'react-router-dom'
-// import Header from './Header'
-// // import Footer from './Footer'
-
-
-
-// const Layout = () => {
-//     return (
-
-//         <section>
-
-//             <Header />
-
-//             <main>
-//                 <Outlet />
-//             </main>
-
-//             {/* <Footer /> */}
-//         </section>
-//     )
-// }
-
-// export default 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -41,7 +17,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<Home />} />
             <Route path="/feature" element={<Home />} />
-            <Route path="/service" element={<Home />} />
+            <Route path="/service" element={<Service />} />
             <Route path="/contact" element={<Home />} />
             <Route path="/reserve" element={<Reserve />} />
             <Route path="/admin" element={<AdminPage />} />
