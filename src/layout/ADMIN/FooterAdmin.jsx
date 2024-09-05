@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useRequestData from '../../hooks/useRequestData';
 
+
 const FooterAdmin = () => {
   const { makeRequest, data, error, isLoading } = useRequestData();
 
@@ -17,7 +18,7 @@ const FooterAdmin = () => {
   const [feedbackMessage, setFeedbackMessage] = useState('');
 
   useEffect(() => {
-    // Fetch the footer data on component mount
+
     makeRequest('http://localhost:5029/footer', 'GET');
   }, [makeRequest]);
 
@@ -43,7 +44,7 @@ const FooterAdmin = () => {
       setFeedbackMessage('Footer updated successfully!');
     } catch (error) {
       setFeedbackMessage('An error occurred while updating the footer.');
-      console.error('Error:', error);  // Log the error to console
+      console.error('Error:', error);  
     }
   };
 
