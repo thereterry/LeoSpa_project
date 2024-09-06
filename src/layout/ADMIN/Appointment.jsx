@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const Appointment = () => {
   const [appointmentData, setAppointmentData] = useState({
+    id: '', 
     name: '',
     email: '',
     phone: '',
@@ -11,6 +12,9 @@ const Appointment = () => {
     notes: ''
   });
 
+  const [appointments, setAppointments] = useState([]);
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAppointmentData({
@@ -18,73 +22,63 @@ const Appointment = () => {
       [name]: value
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch('http://localhost:5029/appointment', {
+      const response = await fetch('http://localhost:5029/appointment/myappointments', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: appointmentData.email,
+          phone: appointmentData.phone
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setAppointments(data);
+        setError(null);
+      } else {
+        setError('Failed to fetch appointments');
+      }
+    } catch (error) {
+      setError('Error: ' + error.message);
+    }
+  };
+  const handleUpdate = async (appointmentId) => {
+    try {
+      const response = await fetch(`http://localhost:5029/appointment/admin/${appointmentId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(appointmentData),
       });
-  
+
       if (response.ok) {
-        console.log('Appointment created successfully');
-        setAppointmentData({
-          name: '',
-          email: '',
-          phone: '',
-          treatment: '',
-          date: '',
-          time: '',
-          notes: ''
-        });
+        const updatedAppointment = await response.json();
+        setAppointments((prevAppointments) =>
+          prevAppointments.map((appointment) =>
+            appointment._id === appointmentId ? updatedAppointment.updated : appointment
+          )
+        );
+        setError(null);
       } else {
-        const errorData = await response.json();
-        console.error('Failed to create appointment:', errorData.message);
+        setError('Failed to update appointment');
       }
     } catch (error) {
-      console.error('Error:', error);
+      setError('Error: ' + error.message);
     }
   };
-  
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-    
-  //   try {
-  //     const response = await fetch('http://localhost:5029/appointment', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(appointmentData),
-  //     });
-
-  //     if (response.ok) {
-  //       console.log('Appointment created successfully');
-  //       setAppointmentData({
-  //         name: '',
-  //         email: '',
-  //         phone: '',
-  //         treatment: '',
-  //         date: '',
-  //         time: '',
-  //         notes: ''
-  //       });
-  //     } else {
-  //       console.error('Failed to create appointment');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">Create a New Appointment</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="text-2xl font-bold mb-6 text-center">Opret & Overblik Appointments</h2>
+      <form onSubmit={handleSubmit} className="mb-8">
         <div className="form-control mb-4">
           <label className="label">
             <span className="label-text">Name:</span>
@@ -95,7 +89,6 @@ const Appointment = () => {
             value={appointmentData.name}
             onChange={handleChange}
             className="input input-bordered w-full"
-            required
           />
         </div>
         <div className="form-control mb-4">
@@ -134,7 +127,6 @@ const Appointment = () => {
             value={appointmentData.treatment}
             onChange={handleChange}
             className="input input-bordered w-full"
-            required
           />
         </div>
         <div className="form-control mb-4">
@@ -147,7 +139,6 @@ const Appointment = () => {
             value={appointmentData.date}
             onChange={handleChange}
             className="input input-bordered w-full"
-            required
           />
         </div>
         <div className="form-control mb-4">
@@ -160,7 +151,6 @@ const Appointment = () => {
             value={appointmentData.time}
             onChange={handleChange}
             className="input input-bordered w-full"
-            required
           />
         </div>
         <div className="form-control mb-6">
@@ -174,8 +164,37 @@ const Appointment = () => {
             className="textarea textarea-bordered w-full"
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary w-full">Create Appointment</button>
+        <button type="submit" className="btn btn-primary w-full">Fetch Appointments</button>
       </form>
+
+      {error && <p className="text-red-500">{error}</p>}
+
+      <div>
+        <h3 className="text-xl font-semibold mb-4">Appointments</h3>
+        {appointments.length === 0 ? (
+          <p>No appointments found.</p>
+        ) : (
+          <ul>
+            {appointments.map((appointment) => (
+              <li key={appointment._id} className="mb-4 p-4 border border-gray-200 rounded-lg">
+                <p><strong>Name:</strong> {appointment.name}</p>
+                <p><strong>Email:</strong> {appointment.email}</p>
+                <p><strong>Phone:</strong> {appointment.phone}</p>
+                <p><strong>Treatment ID:</strong> {appointment.treatment}</p>
+                <p><strong>Date & Time:</strong> {new Date(appointment.dateandtime).toLocaleString()}</p>
+                <p><strong>Notes:</strong> {appointment.notes}</p>
+
+                <button
+                  onClick={() => handleUpdate(appointment._id)}
+                  className="btn btn-warning mt-2"
+                >
+                  Update Appointment
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
