@@ -1,6 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Appointment = () => {
+  //  minDate and maxDate
+  const [minDateString, setMinDateString] = useState('');
+  const [maxDateString, setMaxDateString] = useState('');
+  
+  useEffect(() => {
+    const today = new Date();
+    const minDate = new Date(today);
+    minDate.setDate(minDate.getDate() + 1);
+    const maxDate = new Date(today);
+    maxDate.setMonth(maxDate.getMonth() + 6);
+
+    setMinDateString(minDate.toISOString().split('T')[0]);
+    setMaxDateString(maxDate.toISOString().split('T')[0]);
+  }, []);
+
   const [appointmentData, setAppointmentData] = useState({
     id: '', 
     name: '',
@@ -15,16 +30,53 @@ const Appointment = () => {
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState(null);
 
+  const validateDateTime = (date, time) => {
+    const selectedDate = new Date(`${date}T${time}`);
+    const openingStart = new Date(`${date}T08:00`);
+    const openingEnd = new Date(`${date}T16:00`);
+
+
+
+
+    if (new Date(date) < new Date(minDateString) || new Date(date) > new Date(maxDateString)) {
+      return `Date must be between ${minDateString} and ${maxDateString}.`;
+    }
+
+    // 8-16 åbningstider
+    if (selectedDate < openingStart || selectedDate > openingEnd) {
+      return 'Tider kan kun aftales mellem 08.00 og 16.00.';
+    }
+
+    // weekend
+    const dayOfWeek = selectedDate.getDay();
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+      return 'Umuligt at booke tid om weekenden:)';
+    }
+
+    return null;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAppointmentData({
       ...appointmentData,
       [name]: value
     });
+
+    if ((name === 'date' || name === 'time') && appointmentData.date && appointmentData.time) {
+      const errorMessage = validateDateTime(appointmentData.date, appointmentData.time);
+      setError(errorMessage);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const errorMessage = validateDateTime(appointmentData.date, appointmentData.time);
+    if (errorMessage) {
+      setError(errorMessage);
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:5029/appointment/myappointments', {
@@ -49,7 +101,14 @@ const Appointment = () => {
       setError('Error: ' + error.message);
     }
   };
+
   const handleUpdate = async (appointmentId) => {
+    const errorMessage = validateDateTime(appointmentData.date, appointmentData.time);
+    if (errorMessage) {
+      setError(errorMessage);
+      return;
+    }
+
     try {
       const response = await fetch(`http://localhost:5029/appointment/admin/${appointmentId}`, {
         method: 'PUT',
@@ -190,6 +249,8 @@ const Appointment = () => {
                 >
                   Update Appointment
                 </button>
+             
+
               </li>
             ))}
           </ul>
@@ -200,3 +261,4 @@ const Appointment = () => {
 };
 
 export default Appointment;
+

@@ -4,11 +4,12 @@ import flowerRight from '../../assets/Billeder/jasmine.png';
 import useRequestData from "../../hooks/useRequestData";
 import butterflyImage from '../../assets/Billeder/butterfly.png';
 import Icon from '../../assets/Billeder/icons/1.png';
-
+import Modal from '../Modal';
 const Service = () => {
   const { makeRequest, data, error, isLoading } = useRequestData();
   const [services, setServices] = useState([]);
-  // const [randomServices, setRandomServices] = useState([]);
+  const [selectedContent, setSelectedContent] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     makeRequest('http://localhost:5029/treatment');
@@ -17,13 +18,18 @@ const Service = () => {
   useEffect(() => {
     if (data) {
       setServices(data);
-      // setRandomServices(getRandomItems(data, 4));
+   
     }
   }, [data]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading data</p>;
-  // const firstThreeServices = services.slice(0, 3);
+
+  const handleReadMore = (content) => {
+    setSelectedContent(content);
+    setIsModalOpen(true);
+  };
+
 
   return (
     <section className="relative py-20 bg-white text-center" id='service'>
@@ -38,15 +44,29 @@ const Service = () => {
               <div className="absolute inset-0 bg-[#F26A6C] bg-opacity-75 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <img src={Icon} alt="Icon" className="text-white text-4xl mb-2" />
                 <h3 className="text-white text-xl font-bold mb-2">{service.title}</h3>
-                {/* <p className="text-white text-sm">{service.content.slice(0, 100)}...</p> */}
+                <button
+                    onClick={() => handleReadMore(service.content)}
+                    className="text-white mt-2 underline"
+                  >
+                    Read More
+                  </button>
+      
               </div>
             </div>
           ))}
         </div>
       </div>
       <img src={flowerRight} alt="Flower" className="absolute right-10 top-40 w-24 h-24 hidden md:block" />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        content={selectedContent}
+      />
     </section>
-  );
+    
+  );  
+
+ 
 };
 
 export default Service;

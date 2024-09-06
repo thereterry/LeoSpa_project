@@ -68,8 +68,6 @@ const Navbar = () => {
           {['Home', 'About', 'Feature', 'Service', 'Contact'].map((item) => (
             <Link
               key={item}
-              // to={item === 'Service' ? '/service' : item === 'Feature' ? '/feature' : `/${item.toLowerCase()}`}
-            //  to={item === 'Service' ? '/service' : `#${item.toLowerCase()}`}
             to={item === 'Service' ? '/service' : item === 'Feature' ? '/feature' : `/${item.toLowerCase()}`}
               className="text-lg text-gray-700 hover:text-red-500 uppercase"
               onClick={toggleMenu}
