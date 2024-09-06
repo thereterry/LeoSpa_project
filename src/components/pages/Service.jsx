@@ -8,6 +8,7 @@ import Icon from '../../assets/Billeder/icons/1.png';
 const Service = () => {
   const { makeRequest, data, error, isLoading } = useRequestData();
   const [services, setServices] = useState([]);
+  // const [randomServices, setRandomServices] = useState([]);
 
   useEffect(() => {
     makeRequest('http://localhost:5029/treatment');
@@ -16,11 +17,13 @@ const Service = () => {
   useEffect(() => {
     if (data) {
       setServices(data);
+      // setRandomServices(getRandomItems(data, 4));
     }
   }, [data]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading data</p>;
+  // const firstThreeServices = services.slice(0, 3);
 
   return (
     <section className="relative py-20 bg-white text-center" id='service'>

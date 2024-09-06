@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'; 
 import massageImg from '../../assets/Billeder/extra_procedures_etc/1.jpg';
 import hotStoneImg from '../../assets/Billeder/extra_procedures_etc/2.jpg';
 import waxingImg from '../../assets/Billeder/extra_procedures_etc/3.jpg';
@@ -45,7 +46,9 @@ const Procedures = () => {
                   <div className="p-2 flex flex-col flex-grow justify-between">
                     <h3 className="text-2xl font-playfair mt-4">{procedure.title}</h3>
                     <p className="text-sm font-thin text-gray-700 mb-6 flex-grow mt-4 leading-6" dangerouslySetInnerHTML={{ __html: procedure.description }}></p>
-                    <button className="px-4 py-2 bg-[#242A2C] text-white text-base rounded-full hover:bg-[#F26A6C] uppercase mt-2 m-20 ">Read More</button>
+                    <Link to="/service">
+                      <button className="px-4 py-2 bg-[#242A2C] text-white text-base rounded-full hover:bg-[#F26A6C] uppercase mt-2">Read More</button>
+                    </Link>
                   </div>
                 </div>
               </div>

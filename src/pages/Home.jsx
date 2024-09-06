@@ -28,16 +28,7 @@ const Home = ({ children }) => {
     </section>
     <Footer />
   </main>
-    // <>
-    //   <Hero />
-    //   <About />
-    //   <Procedures />
-    //   <Slider />
-    //   <Team />
-    //   <Contact />
-    //   {children}
-    //   <Footer />
-    // </>
+
   );
 };
 

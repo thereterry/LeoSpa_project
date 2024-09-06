@@ -31,15 +31,7 @@ const HomeLayout = () => {
     </section>
     <Footer />
   </main>
-    // <main className=''>
-    //   <Hero />
-    //   <About />
-    //   <Procedures />
-    //   <Slider />
-    //   <Team />
-    //   <Contact />
-    //   <Footer />
-    // </main>
+
   );
 };
 

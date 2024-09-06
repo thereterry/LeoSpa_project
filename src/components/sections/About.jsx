@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import flowerLeft from '../../assets/Billeder/china-rose.png';
 import flowerRight from '../../assets/Billeder/jasmine.png';
 import useRequestData from "../../hooks/useRequestData";
@@ -52,16 +53,22 @@ const About = () => {
       <div className="container mx-auto px-4">
         <img src={butterflyImage} alt="Butterfly" className='mx-auto mb-6 hidden md:block' />
         <h2 className="text-custom-gray font-medium text-lg uppercase mb-4 ">About Our Spa Center</h2>
-        <h3 className="text-4xl font-medium mb-4 font-display">{aboutData.title}</h3>
+        <h3 className="text-4xl font-medium mb-4 font-playfair">{aboutData.title}</h3>
         <p
           className={`text-sm mb-6 text-custom-gray font-thin leading-8 ${isExpanded ? '' : 'line-clamp-3'}`}
           dangerouslySetInnerHTML={{ __html: aboutData.content }}
         ></p>
-        <button 
+          <Link to="/feature">
+          <button 
+            className="px-10 py-3 bg-[#F26A6C] text-white text-lg uppercase rounded-full hover:text-black">
+            Read More
+          </button>
+        </Link>
+        {/* <button 
           onClick={toggleReadMore} 
           className="px-10 py-3 bg-[#F26A6C] text-white text-lg uppercase rounded-full hover:text-black">
           {isExpanded ? 'Show Less' : 'Read More'}
-        </button>
+        </button> */}
       </div>
       <img src={flowerRight} alt="Flower" className="absolute right-10 top-40 w-24 h-24 hidden md:block" />
       <div className="container mx-auto px-4 mt-10">

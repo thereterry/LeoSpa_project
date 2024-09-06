@@ -66,14 +66,14 @@ const Navbar = () => {
         </button>
         <nav className="flex flex-col space-y-4 items-center py-20">
           {['Home', 'About', 'Feature', 'Service', 'Contact'].map((item) => (
-            <a
+            <Link
               key={item}
-              href={item === 'Service' ? '/service' : `#${item.toLowerCase()}`}
+              to={item === 'Service' ? '/service' : item === 'Feature' ? '/feature' : `/${item.toLowerCase()}`}
               className="text-lg text-gray-700 hover:text-red-500 uppercase"
               onClick={toggleMenu}
             >
               {item}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

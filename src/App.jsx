@@ -8,6 +8,7 @@ import AdminPage from './layout/ADMIN/AdminPage';
 import Navbar from './layout/Navbar';
 import RegisterUser from './components/RegisterUser';
 import Login from './components/Login'
+import Feature from './components/pages/Feature'
 import Service from '../src/components/pages/Service'
 import AdminPanel from './layout/ADMIN/AdminPanel'
 import './index.css';
@@ -29,15 +30,11 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<Home />} />
-            <Route path="/feature" element={<Home />} />
+       
             <Route path="/contact" element={<Home />} />
           </Route>
 
-        {/* <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<Home />} />
-          <Route path="/feature" element={<Home />} /> */}
-          
+          <Route path="/feature" element={<Feature />} />
           <Route path="/service" element={<Service />} />
         
           <Route path="/admin" element={<AdminPage />} />
