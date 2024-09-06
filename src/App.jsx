@@ -12,6 +12,7 @@ import Feature from './components/pages/Feature'
 import Service from '../src/components/pages/Service'
 import AdminPanel from './layout/ADMIN/AdminPanel'
 import './index.css';
+import AdminAppointment from './layout/ADMIN/AdminAppointment';
 
 
 
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/register" element={<RegisterUser />} />
           <Route path="/login" element={<Login />} /> 
           <Route path="/admin-panel" element={<AdminPanel />} />
+          <Route path="/admin/appointment" element={<AdminAppointment />} />
         </Routes>
       </div>
     </Router>

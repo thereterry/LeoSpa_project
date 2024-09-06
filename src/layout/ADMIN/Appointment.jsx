@@ -18,7 +18,6 @@ const Appointment = () => {
       [name]: value
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -30,7 +29,7 @@ const Appointment = () => {
         },
         body: JSON.stringify(appointmentData),
       });
-
+  
       if (response.ok) {
         console.log('Appointment created successfully');
         setAppointmentData({
@@ -43,12 +42,44 @@ const Appointment = () => {
           notes: ''
         });
       } else {
-        console.error('Failed to create appointment');
+        const errorData = await response.json();
+        console.error('Failed to create appointment:', errorData.message);
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
+  
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+    
+  //   try {
+  //     const response = await fetch('http://localhost:5029/appointment', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(appointmentData),
+  //     });
+
+  //     if (response.ok) {
+  //       console.log('Appointment created successfully');
+  //       setAppointmentData({
+  //         name: '',
+  //         email: '',
+  //         phone: '',
+  //         treatment: '',
+  //         date: '',
+  //         time: '',
+  //         notes: ''
+  //       });
+  //     } else {
+  //       console.error('Failed to create appointment');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // };
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
