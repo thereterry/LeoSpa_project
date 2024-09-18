@@ -7,6 +7,7 @@ import Team from '../components/sections/Team';
 import Contact from '../components/sections/Contact';
 import Footer from '../components/sections/Footer';
 
+
 const Home = ({ children }) => {
   return (
     <main>

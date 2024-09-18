@@ -56,7 +56,7 @@ const Login = () => {
                     placeholder="Password"
                     required
                 />
-                <button type="submit">Login</button>
+                <button aria-label type="submit">Login</button>
             </form>
             <p>{message}</p>
             {userData && (
