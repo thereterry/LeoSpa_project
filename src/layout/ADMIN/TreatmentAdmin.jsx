@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useRequestData from '../../hooks/useRequestData';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Link } from 'react-router-dom';
 
 const TreatmentAdmin = () => {
   const { makeRequest, data, error, isLoading } = useRequestData();
@@ -96,6 +97,13 @@ const TreatmentAdmin = () => {
   return (
     <div className="p-6">
       <h1 className="text-3xl mb-4">Treatment Admin</h1>
+
+        {/* Link to the Create Treatment page */}
+        <div className="mb-6">
+        <Link to="/admin/treatment-create" className="bg-green-500 text-white p-2 rounded hover:bg-green-700 transition-colors">
+          Opret Ny Behandling
+        </Link>
+      </div>
       {feedbackMessage && (
         <div className={`p-4 mb-4 ${isError ? 'bg-red-200 text-red-800' : 'bg-green-200 text-green-800'} rounded`}>
           {feedbackMessage}

@@ -13,6 +13,7 @@ import Service from '../src/components/pages/Service'
 import AdminPanel from './layout/ADMIN/AdminPanel'
 import './index.css';
 import AdminAppointment from './layout/ADMIN/AdminAppointment';
+import TreatmentCreate from './layout/ADMIN/TreatmentCreate';
 
 
 
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/login" element={<Login />} /> 
           <Route path="/admin-panel" element={<AdminPanel />} />
           <Route path="/admin/appointment" element={<AdminAppointment />} />
+          <Route path="/admin/treatment-create" element={<TreatmentCreate />} />
         </Routes>
       </div>
     </Router>
